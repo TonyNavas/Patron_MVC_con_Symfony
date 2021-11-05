@@ -27,7 +27,13 @@ class MainController extends AbstractController
         $crud = new Crud();
         $form = $this->createForm(CrudType::class, $crud);
         $form->handleRequest($request);
+        if($form->isSubmitted() &&  $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($crud);
+            $em->flush();
 
+            $this->addFlash('notice','Se guardo el registro correctamente!!');
+        }
         return $this->render('main/create.html.twig',[
             'form' => $form->createView()
         ]);
