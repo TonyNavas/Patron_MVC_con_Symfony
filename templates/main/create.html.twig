@@ -3,10 +3,25 @@
 {% block body %}
 <div class="contenedor">
   <div class="row">
-    <h3 class="mt-5 mb-5">Create form</h3>
+    <h3 class="mt-5 mb-5 ">Create form</h3>
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-success bg-success text-white">
+            {{ message }}
+        </div>
+    {% endfor %}
     <div class="col-md-6 offset-md-3">
             {{ form_start(form) }}
-                {{ form(form) }}
+                <div class="form-group">
+                {{form_label(form.title)}}
+                    {{ form_widget(form.title,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                {{form_label(form.content)}}
+                    {{ form_widget(form.content,{'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group">
+                <button class="btn btn-info text-white mt-3">Guardar</button>
+                </div>
             {{ form_end(form) }}
     </div>
   </div>
