@@ -1,15 +1,17 @@
 {% extends "base.html.twig" %} 
 
 {% block body %}
-<div class="contenedor">
+<div class="container">
   <div class="row">
-    <h3 class="mt-5 mb-5 ">Create form</h3>
     {% for message in app.flashes('notice') %}
         <div class="alert alert-success bg-success text-white">
             {{ message }}
         </div>
     {% endfor %}
     <div class="col-md-6 offset-md-3">
+    <h4 class="mt-5">Crear nuevo registro</h4>
+    <div class="card mt-5">
+    <div class="card-body">
             {{ form_start(form) }}
                 <div class="form-group">
                 {{form_label(form.title)}}
@@ -23,6 +25,8 @@
                 <button class="btn btn-info text-white mt-3">Guardar</button>
                 </div>
             {{ form_end(form) }}
+                </div>
+    </div>
     </div>
   </div>
 </div>
